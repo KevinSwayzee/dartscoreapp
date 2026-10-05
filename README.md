@@ -47,7 +47,8 @@ Keypad enters **one dart at a time**, press **OK**; a visit ends after
    curl -O https://storage.googleapis.com/dart-archive/channels/stable/release/latest/sdk/dartsdk-linux-arm64-release.zip
    sudo unzip dartsdk-linux-arm64-release.zip -d /opt     # → /opt/dart-sdk
    ```
-   (32-bit OS: use `dartsdk-linux-armhf-release.zip` instead.)
+   (32-bit OS: use `dartsdk-linux-arm-release.zip` instead — check
+   `uname -m`: `aarch64` = 64-bit, `armv7l` = 32-bit.)
 2. Get the code onto the Pi:
    ```bash
    sudo git clone https://github.com/KevinSwayzee/dartscoreapp.git /opt/dartscore
