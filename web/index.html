@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#101820">
+  <title>DartScore</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ CONFIG SCREEN ============ -->
+  <section id="config-screen" class="screen">
+    <div class="config-card">
+      <h1>🎯 DartScore</h1>
+
+      <div class="field">
+        <label>Game</label>
+        <div class="segmented" id="game-choice">
+          <button data-value="301" class="selected">301</button>
+          <button data-value="501">501</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Sets (best of)</label>
+        <div class="segmented" id="sets-choice">
+          <button data-value="3" class="selected">Best of 3</button>
+          <button data-value="5">Best of 5</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Players (1–4)</label>
+        <div class="segmented" id="count-choice">
+          <button data-value="1">1</button>
+          <button data-value="2" class="selected">2</button>
+          <button data-value="3">3</button>
+          <button data-value="4">4</button>
+        </div>
+        <div id="name-fields">
+          <input type="text" maxlength="14" placeholder="Player 1" data-idx="0">
+          <input type="text" maxlength="14" placeholder="Player 2" data-idx="1">
+          <input type="text" maxlength="14" placeholder="Player 3" data-idx="2" hidden>
+          <input type="text" maxlength="14" placeholder="Player 4" data-idx="3" hidden>
+        </div>
+      </div>
+
+      <label class="switch-row" title="Off: reaching 0 with any dart wins the set">
+        <span class="switch">
+          <input type="checkbox" id="double-out" checked>
+          <span class="slider"></span>
+        </span>
+        <span id="double-out-label">Double out</span>
+      </label>
+
+      <button id="start-btn" class="primary big">Start match</button>
+      <p class="hint" id="rules-hint">Checkout: double-out · Bust: below 0, on 1, or 0 without a double</p>
+    </div>
+  </section>
+
+  <!-- ============ GAME SCREEN ============ -->
+  <section id="game-screen" class="screen" hidden>
+
+    <header id="scoreboard"></header>
+
+    <main class="game-grid">
+      <aside id="history-panel">
+        <h2>Visits <span id="history-player" class="muted"></span></h2>
+        <ul id="visit-list"></ul>
+      </aside>
+
+      <div id="center-panel">
+        <div id="turn-banner"></div>
+        <div id="remaining-score"></div>
+        <div id="open-visit"></div>
+
+        <div id="keypad">
+          <div class="kp-display">
+            <span id="kp-seg" class="seg seg-S">S</span>
+            <span id="kp-value">&nbsp;</span>
+          </div>
+          <div class="kp-grid">
+            <button data-kp="7">7</button>
+            <button data-kp="8">8</button>
+            <button data-kp="9">9</button>
+            <button data-kp="4">4</button>
+            <button data-kp="5">5</button>
+            <button data-kp="6">6</button>
+            <button data-kp="1">1</button>
+            <button data-kp="2">2</button>
+            <button data-kp="3">3</button>
+            <button data-kp="seg" class="kp-toggle">S</button>
+            <button data-kp="0">0</button>
+            <button data-kp="back" class="kp-fn">⌫</button>
+            <button data-kp="clear" class="kp-fn">C</button>
+            <button data-kp="miss" class="kp-fn">Miss</button>
+            <button data-kp="enter" class="kp-enter">OK</button>
+          </div>
+          <div class="kp-actions">
+            <button id="undo-btn" class="warn">↩ Undo</button>
+            <button id="new-match-btn" class="ghost">New match</button>
+          </div>
+        </div>
+      </div>
+
+      <aside id="stats-panel">
+        <h2>Stats <span id="stats-player" class="muted"></span></h2>
+        <div id="stats-body"></div>
+      </aside>
+    </main>
+
+    <div id="toast" hidden></div>
+  </section>
+
+  <!-- ============ MATCH OVER SCREEN ============ -->
+  <section id="over-screen" class="screen" hidden>
+    <div class="config-card center">
+      <h1 id="winner-text">🏆</h1>
+      <p id="final-score" class="muted"></p>
+      <div id="final-stats"></div>
+      <div class="row">
+        <button id="rematch-btn" class="primary big">Rematch</button>
+        <button id="newmatch-btn" class="ghost big">New match</button>
+      </div>
+      <label class="switch-row" title="Keep stats across rematches">
+        <span class="switch">
+          <input type="checkbox" id="keep-stats" checked>
+          <span class="slider"></span>
+        </span>
+        <span id="keep-stats-label">Continue stats</span>
+      </label>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

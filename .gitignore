@@ -1,0 +1,31 @@
+# Dart / pub
+.dart_tool/
+.packages
+build/
+doc/api/
+pubspec_overrides.yaml
+
+# Compiled output
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.o
+*.wasm
+
+# Coverage
+coverage/
+
+# Editors
+.idea/
+.vscode/
+*.iml
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Local-only config & logs
+.env
+*.log

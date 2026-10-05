@@ -1,0 +1,16 @@
+name: dartscore
+description: LAN darts scoring app — 301/501, best of 3/5 sets, up to 4 players.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  shelf: ^1.4.0
+  shelf_router: ^1.1.0
+  shelf_static: ^1.1.0
+
+dev_dependencies:
+  lints: ^4.0.0
+  test: ^1.25.0

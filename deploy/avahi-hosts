@@ -1,0 +1,9 @@
+# Extra mDNS names this Pi answers (alongside <hostname>.local from Avahi).
+# Install:  sudo cp deploy/avahi-hosts /etc/avahi/hosts
+#           sudo systemctl restart avahi-daemon
+# Format:   one "<ip> <name>.local" per line.
+# IMPORTANT: the IP is baked into the mDNS announcement, so give the Pi a
+# stable address (router DHCP reservation or static IP) — unlike
+# <hostname>.local, these aliases do NOT follow the machine if its IP changes.
+192.168.1.50 dartboard.local
+192.168.1.50 other_app.local

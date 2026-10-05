@@ -1,0 +1,18 @@
+[Unit]
+Description=DartScore LAN scoring server
+After=network.target
+
+[Service]
+User=pi
+WorkingDirectory=/opt/dartscore
+# 8080 = origin port behind the nginx reverse proxy (deploy/nginx-dartscore.conf
+# routes http://dartboard.local → 127.0.0.1:8080). Direct access on :8080 also
+# still works. To serve on port 80 directly instead (no nginx), use
+# Environment=PORT=80 plus AmbientCapabilities=CAP_NET_BIND_SERVICE.
+Environment=PORT=8080
+ExecStart=/opt/dart-sdk/bin/dart run bin/server.dart
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
